@@ -18,3 +18,7 @@ pip install Cython==0.23
 4) Install Kivy
 
 pip install kivy
+
+### Start the game (Linux)
+
+python main.py
