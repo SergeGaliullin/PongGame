@@ -1,4 +1,4 @@
-from kivy.properties import NumericProperty, ReferenceListProperty
+from kivy.properties import NumericProperty, ReferenceListProperty, Clock, ObjectProperty
 
 from kivy.app import App
 from kivy.uix.widget import Widget
@@ -6,7 +6,11 @@ from kivy.vector import Vector
 
 
 class PongGame(Widget):
-    pass
+    def update(self, dt):
+        ball = ObjectProperty(None)
+
+        def update(self, dt):
+            self.ball.move()
 
 class PongBall(Widget):
 
@@ -26,7 +30,9 @@ class PongBall(Widget):
 
 class PongApp(App):
     def build(self):
-        return PongGame()
+        game = PongGame()
+        Clock.schedule_interval(game.update, 1.0 / 60.0)
+        return game
 
 
 if __name__ == '__main__':
